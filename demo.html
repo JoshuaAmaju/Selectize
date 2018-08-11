@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Selectizr</title>
+    <link rel="stylesheet" type="text/css" href="selectizr-style.css">
+  </head>
+  <body>
+
+    <div id="select" data-selectize></div>
+    <div id="select2" data-selectize></div>
+
+    <script src="selectizr.js"></script>
+    <script type="text/javascript">
+      let options = [];
+      let options2 = [];
+
+      for (var i = 0; i < 10; i++) {
+        options.push({'id': i, 'value': `Some value ${Math.random() - 10}`});
+      }
+
+      for (var i = 10; i > 0; i--) {
+        options2.push({'id': i, 'value': `Value ${Math.random() * 10}`});
+      }
+
+      let select = document.querySelector('#select');
+      let select2 = document.querySelector('#select2');
+
+      let selectize = new Selectizr(select);
+      let selectize2 = new Selectizr(select2);
+
+      selectize.create('Placeholder', options, {'background': 'pink', 'color': '#000'});
+      selectize2.create('Placeholder2', options2);
+
+      setTimeout(function () {
+        console.log(selectize.getSelectedChips());
+        console.log(selectize2.getSelectedChips());
+      }, 7000);
+
+    </script>
+
+  </body>
+</html>
